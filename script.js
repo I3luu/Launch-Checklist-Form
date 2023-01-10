@@ -1,5 +1,20 @@
 // Write your JavaScript code here!
 window.addEventListener("load", function () {
+   this.fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response) {
+      response.json().then(function(json) {
+         let div = document.getElementById("missionTarget");
+         let destination = Math.round(Math.random()*json.length);
+         div.innerHTML = `<h2>Mission Destination</h2>
+         <ol>
+            <li>Name: ${json[destination].name}</li>
+            <li>Diameter: ${json[destination].diameter}</li>
+            <li>Star: ${json[destination].star}</li>
+            <li>Distance from Earth: ${json[destination].distance}</li>
+            <li>Number of Moons: ${json[destination].moons}</li>
+         </ol>
+         <img src="${json[destination].image}">`;
+      });
+   });
    let form = document.querySelector("form");
    form.addEventListener("submit", function (event) {
       event.preventDefault();
@@ -53,7 +68,7 @@ window.addEventListener("load", function () {
          launchStatus.innerHTML = "Shuttle ready to launch";
          launchStatus.style.color = "green";
       };
-      document.querySelector("#launchForm").submit()
+      //document.querySelector("#launchForm").submit()
    });
 });
 
