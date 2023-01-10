@@ -48,6 +48,10 @@ window.addEventListener("load", function () {
          cargoStatus.innerHTML = "Cargo mass check passed";
          launchStatus.innerHTML = "Awaiting Information Before Launch";
          launchStatus.style.color = "black";
+      };
+      if(fuelLevel>=10000 && cargoMass<=10000){
+         launchStatus.innerHTML = "Shuttle ready to launch";
+         launchStatus.style.color = "green";
       }
    });
 });
